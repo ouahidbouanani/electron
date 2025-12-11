@@ -7,7 +7,8 @@
     "strict": true,
     "esModuleInterop": true,
     "moduleResolution": "node",
-    "types": ["node"],
+  //  "types": ["node"],
+  "types": ["node", "jest"],
     "sourceMap": true
   },
   "include": ["./**/*.ts"]    
