@@ -1,3 +1,4 @@
+// src/env.d.ts
 export {};
 
 declare global {
@@ -8,6 +9,35 @@ declare global {
         getById: (id: number) => Promise<any>;
         add: (payload: any) => Promise<{ id: number }>;
         update: (payload: any) => Promise<void>;
+        delete: (id: number) => Promise<void>;
+      };
+
+      category: {
+        getAll: () => Promise<any[]>;
+        add: (payload: any) => Promise<any>;
+        update: (payload: any) => Promise<void>;
+        delete: (id: number) => Promise<void>;
+      };
+
+      client: {
+        getAll: () => Promise<any[]>;
+        getById: (id: number) => Promise<any>;
+        add: (payload: any) => Promise<any>;
+        update: (payload: any) => Promise<void>;
+        delete: (id: number) => Promise<void>;
+      };
+
+      commande: {
+        getAll: () => Promise<any[]>;
+        getById: (id: number) => Promise<any>;
+        add: (payload: any) => Promise<any>;
+        update: (payload: any) => Promise<void>;
+        delete: (id: number) => Promise<void>;
+      };
+
+      commandeLigne: {
+        getByCommande: (commandeId: number) => Promise<any[]>;
+        add: (payload: any) => Promise<any>;
         delete: (id: number) => Promise<void>;
       };
     };
