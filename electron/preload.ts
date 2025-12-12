@@ -7,6 +7,7 @@ contextBridge.exposeInMainWorld('api', {
     add: (payload: any) => ipcRenderer.invoke('produit:add', payload),
     update: (payload: any) => ipcRenderer.invoke('produit:update', payload),
     delete: (id: number) => ipcRenderer.invoke('produit:delete', id),
+    getByCategory: (categoryId: number) => ipcRenderer.invoke('produit:getByCategory', categoryId),
   },
   category: {
     getAll: () => ipcRenderer.invoke('category:getAll'),
@@ -34,5 +35,23 @@ contextBridge.exposeInMainWorld('api', {
     add: (payload: any) => ipcRenderer.invoke('commandeLigne:add', payload),
     delete: (id: number) => ipcRenderer.invoke('commandeLigne:delete', id),
   },
+   supplier: {
+    getAll: () => ipcRenderer.invoke("fournisseur:getAll"),
+    add: (data: any) => ipcRenderer.invoke("fournisseur:add", data),
+    delete: (id: number) => ipcRenderer.invoke("fournisseur:delete", id),
+  },
+   shipment: {
+    add: (payload: any) => ipcRenderer.invoke("livraison:add", payload),
+    getByCommande: (commandeId: number) => ipcRenderer.invoke("livraison:getByCommande", commandeId),
+    update: (payload: any) => ipcRenderer.invoke("livraison:update", payload),
+    delete: (id: number) => ipcRenderer.invoke("livraison:delete", id),
+  },
+  pdf: {
+  bonCommande: (commandeId: number) =>
+    ipcRenderer.invoke("pdf:bonCommande", commandeId),
+  bonLivraison: (livraisonId: number) =>
+    ipcRenderer.invoke("pdf:bonLivraison", livraisonId),
+}
+
 });
 

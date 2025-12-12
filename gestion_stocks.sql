@@ -52,11 +52,7 @@ CREATE TABLE IF NOT EXISTS `client` (
 ;
 
 -- --------------------------------------------------------
-
---
--- Structure de la table `commande`
---
-
+-- Table commande (avec InnoDB pour les clés étrangères)
 DROP TABLE IF EXISTS `commande`;
 CREATE TABLE IF NOT EXISTS `commande` (
   `id` int NOT NULL AUTO_INCREMENT,
@@ -65,7 +61,19 @@ CREATE TABLE IF NOT EXISTS `commande` (
   `total` decimal(10,2) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `client_id` (`client_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Table livraison
+DROP TABLE IF EXISTS `livraison`;
+CREATE TABLE IF NOT EXISTS `livraison` (
+  id INT NOT NULL AUTO_INCREMENT,
+  commande_id INT NOT NULL,
+  date_livraison DATETIME DEFAULT CURRENT_TIMESTAMP,
+  statut ENUM('EN_ATTENTE', 'EXPEDIE', 'LIVRE') DEFAULT 'EN_ATTENTE',
+  PRIMARY KEY (id),
+  KEY commande_id (commande_id),
+  CONSTRAINT fk_commande FOREIGN KEY (commande_id) REFERENCES commande(id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 

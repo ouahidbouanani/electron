@@ -27,6 +27,10 @@ export const useStockStore = defineStore('stock', {
     async updateProduit(p: Produit) {
       await window.api.produit.update(p);
       await this.loadProduits();
+    },
+     async loadProduitsByCategory(categoryId: number) {
+      
+      this.produits = await window.api.produit.getByCategory(categoryId);
     }
   },
 });

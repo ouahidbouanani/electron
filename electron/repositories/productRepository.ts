@@ -59,4 +59,9 @@ export const productRepository = {
     const sql = `DELETE FROM produit WHERE id = ?`;
     await query(sql, [id]);
   },
+  async getByCategory(categoryId: number): Promise<Produit[]> {
+  const sql = `SELECT * FROM produit WHERE category_id = ?`;
+  return await query<Produit>(sql, [categoryId]);
+},
+
 };

@@ -4,6 +4,7 @@ export interface CommandeLigne {
   id?: number;
   commande_id: number;
   product_id: number;
+  product_name?: string;
   quantite: number;
   prix: number;
 }
@@ -11,12 +12,13 @@ export interface CommandeLigne {
 export const orderLineRepository = {
   async add(line: Omit<CommandeLigne, "id">): Promise<number> {
     const sql = `
-      INSERT INTO commande_ligne (commande_id, product_id, quantite, prix)
-      VALUES (?, ?, ?, ?)
+      INSERT INTO commande_ligne (commande_id, product_id, product_name, quantite, prix)
+      VALUES (?, ?, ?, ?, ?)
     `;
     const params = [
       line.commande_id,
       line.product_id,
+      line.product_name,
       line.quantite,
       line.prix,
     ];

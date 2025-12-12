@@ -10,6 +10,7 @@ declare global {
         add: (payload: any) => Promise<{ id: number }>;
         update: (payload: any) => Promise<void>;
         delete: (id: number) => Promise<void>;
+        getByCategory: (categoryId: number) => Promise<any[]>;
       };
 
       category: {
