@@ -1,23 +1,79 @@
 <template>
-  <div class="layout">
+  <div class="flex h-screen bg-gray-100">
     <!-- Sidebar -->
-    <aside class="sidebar">
-      <h1 class="logo">StockApp</h1>
+    <aside class="w-64 bg-blue-900 text-white flex flex-col">
+      <div class="px-6 py-5 text-2xl font-bold">
+        StockApp
+      </div>
 
-      <nav class="nav">
-        <RouterLink to="/dashboard">Dashboard</RouterLink>
-        <RouterLink to="/produits">Produits</RouterLink>
-        <RouterLink to="/categories">Catégories</RouterLink>
-        <RouterLink to="/clients">Clients</RouterLink>
-        <RouterLink to="/fournisseurs">Fournisseurs</RouterLink>
-        <RouterLink to="/commandes">Commandes</RouterLink>
-        <RouterLink to="/livraisons">Livraisons</RouterLink>
+      <nav class="flex-1 px-2 space-y-1">
+        <RouterLink
+          to="/dashboard"
+          class="flex items-center gap-3 px-4 py-2 rounded-md text-blue-100 hover:bg-blue-700 hover:text-white transition"
+          active-class="bg-blue-600 text-white"
+        >
+          <Squares2X2Icon class="w-5 h-5" />
+          Dashboard
+        </RouterLink>
 
+        <RouterLink
+          to="/produits"
+          class="flex items-center gap-3 px-4 py-2 rounded-md text-blue-100 hover:bg-blue-700 hover:text-white transition"
+          active-class="bg-blue-600 text-white"
+        >
+          <CubeIcon class="w-5 h-5" />
+          Produits
+        </RouterLink>
+
+        <RouterLink
+          to="/categories"
+          class="flex items-center gap-3 px-4 py-2 rounded-md text-blue-100 hover:bg-blue-700 hover:text-white transition"
+          active-class="bg-blue-600 text-white"
+        >
+          <TagIcon class="w-5 h-5" />
+          Catégories
+        </RouterLink>
+
+        <RouterLink
+          to="/clients"
+          class="flex items-center gap-3 px-4 py-2 rounded-md text-blue-100 hover:bg-blue-700 hover:text-white transition"
+          active-class="bg-blue-600 text-white"
+        >
+          <UsersIcon class="w-5 h-5" />
+          Clients
+        </RouterLink>
+
+        <RouterLink
+          to="/fournisseurs"
+          class="flex items-center gap-3 px-4 py-2 rounded-md text-blue-100 hover:bg-blue-700 hover:text-white transition"
+          active-class="bg-blue-600 text-white"
+        >
+          <TruckIcon class="w-5 h-5" />
+          Fournisseurs
+        </RouterLink>
+
+        <RouterLink
+          to="/commandes"
+          class="flex items-center gap-3 px-4 py-2 rounded-md text-blue-100 hover:bg-blue-700 hover:text-white transition"
+          active-class="bg-blue-600 text-white"
+        >
+          <ShoppingCartIcon class="w-5 h-5" />
+          Commandes
+        </RouterLink>
+
+        <RouterLink
+          to="/livraisons"
+          class="flex items-center gap-3 px-4 py-2 rounded-md text-blue-100 hover:bg-blue-700 hover:text-white transition"
+          active-class="bg-blue-600 text-white"
+        >
+          <ClipboardDocumentListIcon class="w-5 h-5" />
+          Livraisons
+        </RouterLink>
       </nav>
     </aside>
 
-    <!-- Contenu principal -->
-    <main class="main">
+    <!-- Main content -->
+    <main class="flex-1 p-6 overflow-auto">
       <RouterView />
     </main>
   </div>
@@ -25,56 +81,14 @@
 
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
+
+import {
+  Squares2X2Icon,
+  CubeIcon,
+  TagIcon,
+  UsersIcon,
+  TruckIcon,
+  ShoppingCartIcon,
+  ClipboardDocumentListIcon
+} from '@heroicons/vue/24/outline'
 </script>
-
-<style scoped>
-
-.layout {
-  display: flex;
-  height: 100vh;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-}
-
-.sidebar {
-  width: 240px;
-  background-color: #1e3a8a; 
-  color: white;
-  display: flex;
-  flex-direction: column;
-  padding: 1rem;
-}
-
-.logo {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-bottom: 2rem;
-}
-
-.nav {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.nav a {
-  color: white;
-  text-decoration: none;
-  padding: 0.5rem 0.75rem;
-  border-radius: 6px;
-}
-
-.nav a:hover {
-  background-color: #1d4ed8;
-}
-
-.nav a.router-link-active {
-  background-color: #2563eb;
-}
-
-.main {
-  flex: 1;
-  padding: 1rem;
-  overflow-y: auto;
-  background-color: #f9fafb;
-}
-</style>
