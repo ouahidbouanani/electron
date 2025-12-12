@@ -12,7 +12,6 @@
         <RouterLink to="/fournisseurs">Fournisseurs</RouterLink>
         <RouterLink to="/commandes">Commandes</RouterLink>
         <RouterLink to="/livraisons">Livraisons</RouterLink>
-        <RouterLink to="/Facteur">fornisseur</RouterLink>
 
       </nav>
     </aside>
@@ -29,17 +28,16 @@ import { RouterLink, RouterView } from 'vue-router'
 </script>
 
 <style scoped>
-/* Layout global /
+
 .layout {
   display: flex;
   height: 100vh;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
-/ Sidebar /
 .sidebar {
   width: 240px;
-  background-color: #1e3a8a; / bleu foncé /
+  background-color: #1e3a8a; 
   color: white;
   display: flex;
   flex-direction: column;
@@ -52,7 +50,6 @@ import { RouterLink, RouterView } from 'vue-router'
   margin-bottom: 2rem;
 }
 
-/ Navigation /
 .nav {
   display: flex;
   flex-direction: column;
@@ -70,12 +67,10 @@ import { RouterLink, RouterView } from 'vue-router'
   background-color: #1d4ed8;
 }
 
-/ Lien actif /
 .nav a.router-link-active {
   background-color: #2563eb;
 }
 
-/ Main content */
 .main {
   flex: 1;
   padding: 1rem;
