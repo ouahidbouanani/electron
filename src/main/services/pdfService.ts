@@ -18,7 +18,6 @@ function ensurePdfDir(filePath: string) {
 }
 
 function moneyEUR(v: number) {
-  // ton style exemple utilise "€", je garde EUR (tu peux switch)
   return `${Number(v ?? 0).toFixed(2)} €`;
 }
 

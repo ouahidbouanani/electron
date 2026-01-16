@@ -61,12 +61,34 @@ const localError = ref("");
 
 async function onRegister() {
   localError.value = "";
-  if (!nom.value.trim()) return (localError.value = "Nom requis.");
-  if (!email.value.trim()) return (localError.value = "Email requis.");
-  if (password.value.length < 4) return (localError.value = "Mot de passe trop court (min 4).");
-  if (password.value !== confirm.value) return (localError.value = "Les mots de passe ne correspondent pas.");
 
-  const ok = await auth.register({ nom: nom.value.trim(), email: email.value.trim(), password: password.value });
+  if (!nom.value.trim()) {
+    localError.value = "Nom requis.";
+    return;
+  }
+
+  if (!email.value.trim()) {
+    localError.value = "Email requis.";
+    return;
+  }
+
+  if (password.value.length < 4) {
+    localError.value = "Mot de passe trop court (min 4).";
+    return;
+  }
+
+  if (password.value !== confirm.value) {
+    localError.value = "Les mots de passe ne correspondent pas.";
+    return;
+  }
+
+  const ok = await auth.register({
+    nom: nom.value.trim(),
+    email: email.value.trim(),
+    password: password.value
+  });
+
   if (ok) router.push("/dashboard");
 }
+
 </script>

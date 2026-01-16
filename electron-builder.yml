@@ -13,6 +13,7 @@ asarUnpack:
   - resources/**
 win:
   executableName: gest
+  forceCodeSigning: false
 nsis:
   artifactName: ${name}-${version}-setup.${ext}
   shortcutName: ${productName}

@@ -1,4 +1,4 @@
-import { app, BrowserWindow, ipcMain, shell } from "electron";
+import { app, BrowserWindow, ipcMain, shell, Menu} from "electron";
 import path from "path";
 import "./db";
 
@@ -18,7 +18,9 @@ const isDev = process.env.NODE_ENV === "development";
 let mainWindow: BrowserWindow | null = null;
 
 function createWindow() {
+  Menu.setApplicationMenu(null)
   mainWindow = new BrowserWindow({
+    icon: path.join(__dirname, '../resources/icon.png'),
     width: 1200,
     height: 800,
     webPreferences: {
@@ -143,7 +145,7 @@ ipcMain.handle("auth:logout", async () => {
  * On envoie baseDir à pdfService pour stocker dans un endroit safe:
  * app.getPath("userData") est toujours writable en prod.
  */
-const pdfBaseDir = () => path.join(app.getPath("userData"), "pdf");
+
 
 ipcMain.handle("pdf:bonCommande", async (_e, commandeId: number) => {
   return pdfService.bonCommande(commandeId);
